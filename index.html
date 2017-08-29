@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            display: flex;
+            height: 100px;
+            justify-content: space-between;
+            padding: 0 150px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .nav-ul {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .nav-li {
+            list-style-type: none;
+            padding: 12px 15px;
+            margin-left: 20px;
+        }
+
+        .nav-ul > li:last-child {
+            width: 20px;
+        }
+
+        .flexbox div {
+            margin: 0 20px;
+        }
+
+        .flexbox div label {
+            color: #aaaaaa;
+            display: block;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .flexbox div input {
+            background: transparent;
+            border: 1px solid #aaaaaa;
+            border-radius: 3px;
+            width: 255px;
+            height: 34px;
+            margin-bottom: 26px;
+            color: #aaaaaa;
+        }
+
+        .intruduce {
+            width: 1150px;
+            margin: 100px auto;
+        }
+
+        .intruduce img {
+            float: left;
+        }
+
+        .intruduceText {
+            float: left;
+            width: 360px;
+            padding-left: 38px;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div id="app"></div>
+<script src="bower_components/react/react.js"></script>
+<script src="bower_components/react/react-dom.js"></script>
+<script>
+    var Logo = React.createClass({
+        render: function () {
+            return React.DOM.div({
+                    className: 'img-Box'
+                },
+                React.DOM.img({
+                        src: './img/logo.png',
+                        width: '100px'
+                    }
+                ))
+        }
+    });
+    var Li = React.createClass({
+        _onClick: function (event) {
+            this.setState({
+                checked: !this.state.checked
+            });
+        },
+        getInitialState: function () {
+            return {checked: false};
+        },
+        render: function () {
+            var clickStyle = {
+                backgroundColor: this.state.checked ? '#aaa' : 'transparent',
+                color: this.state.checked ? '#fff' : '#000'
+            };
+            return React.DOM.li({
+                    style: clickStyle,
+                    className: 'nav-li',
+                    onClick: this._onClick
+                },
+                React.DOM.a({href: '#'}, this.props.title))
+        }
+    });
+    var Nav = React.createClass({
+        propTypes: {
+            title: React.PropTypes.string.isRequired
+        },
+        render: function () {
+            return React.DOM.ul({
+                    className: 'nav-ul'
+                },
+                React.createElement(Li, {title: '首页'}),
+                React.createElement(Li, {title: '服务'}),
+                React.createElement(Li, {title: 'WIKI'}),
+                React.createElement(Li, {title: '联系我们'}),
+                React.createElement(Li, {title: '加入我们'}),
+                React.createElement(Li, {title: '关于'}),
+                React.createElement(Li, {title: 'En'})
+            )
+        }
+    });
+    var Header = React.createClass({
+        render: function () {
+            return React.DOM.header({},
+                React.createElement(Logo),
+                React.createElement(Nav)
+            )
+        }
+    });
+    var Banner = React.createClass({
+        render: function () {
+            return React.DOM.div({
+                style: {
+                    height: '178px',
+                    backgroundImage: 'url("img/bg_contact_banner.jpg")',
+                    backgroundSize: 'cover'
+                }
+            }, React.DOM.h2({
+                style: {
+                    background: 'rgba(0,0,0,0.5)',
+                    height: '100%',
+                    lineHeight: '178px',
+                    color: '#fff',
+                    paddingLeft: '150px',
+                    fontWeight: 'normal'
+                }
+            }, '联系我们'))
+        }
+    });
+
+    var MainContent = React.createClass({
+        render: function () {
+            return React.DOM.div({
+                    //整体样式
+                    style: {
+                        marginTop: "100px",
+                        marginLeft: "150px",
+                        marginRight: "150px",
+                        paddingBottom: '100px'
+                    }
+                },
+                //上层图片
+                React.DOM.div({
+                        style: {
+                            display: "flex",
+                            justifyContent: "space-between",
+                        }
+                    },
+                    React.DOM.img({
+                        src: "img/city_beijing.jpg",
+                        width: "60%",
+                        height: "60%"
+                    }),
+                    React.DOM.div({
+                            style: {
+                                marginLeft: "40px",
+                                fontSize: "15px"
+                            }
+                        },
+                        React.DOM.div({
+                            style: {
+                                marginTop: "6px",
+                                fontWeight: "bold",
+                                fontSize: "22px"
+
+                            }
+                        }, "北京总部"),
+                        React.DOM.div({
+                            style: {
+                                marginTop: "48px",
+                            }
+                        }, "总部位于北京，分别在上海，广州以及台北设立了办公室，随时欢迎您的来访。您也可以发送邮件给我们，让合作更愉快发生"),
+                        React.DOM.div({
+                            style: {
+                                marginTop: "34px",
+                            }
+                        }, "联系我们：ella.li@centrixlink.com"),
+                        React.DOM.div({
+                            style: {
+                                marginTop: "28px",
+                            }
+                        }, "地址：北京市东城区贡院西路6号E座7层"),
+                        React.DOM.div({
+                            style: {
+                                marginTop: "30px",
+                                fontWeight: "bold",
+                                fontSize: "19px",
+                            }
+                        }, "李蕊Ella"),
+                        React.DOM.div({
+                            style: {
+                                marginTop: "27px",
+                            }
+                        }, "邮箱：ella.li@centrixlink.com"),
+                        React.DOM.div({
+                            style: {
+                                marginTop: "29px",
+                            }
+                        }, "QQ:11396577")
+                    )
+                ),
+                //下层图片
+                React.DOM.div({
+                        style: {
+                            display: "flex",
+                            justifyContent: "space-between",
+                            marginTop: "100px"
+                        }
+                    },
+                    React.DOM.div({},
+                        React.DOM.div({},
+                            React.DOM.img({
+                                src: "img/city_guangzhou.jpg"
+                            })
+                        ),
+                        React.DOM.div({
+                            style: {
+                                fontSize: "23px",
+                                marginTop: "20px"
+                            }
+                        }, "广州办公室"),
+                        React.DOM.div({
+                            style: {
+                                fontSize: "15px",
+                                marginTop: "19px"
+                            }
+                        }, "广州市天河区金橞路62号乔欣国际24楼")
+                    ),
+                    React.DOM.div({},
+                        React.DOM.div({},
+                            React.DOM.img({
+                                src: "img/city_shanghai.jpg"
+                            })),
+                        React.DOM.div({
+                            style: {
+                                fontSize: "23px",
+                                marginTop: "20px"
+                            }
+                        }, "上海办公室"),
+                        React.DOM.div({
+                            style: {
+                                fontSize: "15px",
+                                marginTop: "19px"
+                            }
+                        }, "上海市西藏南路222号永银大厦L2-L2")
+                    ),
+                    React.DOM.div({},
+                        React.DOM.div({},
+                            React.DOM.img({
+                                src: "img/city_taibei.jpg"
+                            })),
+                        React.DOM.div({
+                            style: {
+                                fontSize: "23px",
+                                marginTop: "20px"
+                            }
+                        }, "台北办公室"),
+                        React.DOM.div({
+                            style: {
+                                fontSize: "15px",
+                                marginTop: "19px"
+                            }
+                        }, "台北市中山区建国北路一段80号10-1")
+                    )
+                )
+            )
+        }
+    });
+
+    //    var InputGroup = React.createClass({
+    //        propTypes: {
+    //            name: React.PropTypes.string.isRequired
+    //        },
+    //        _onChange: function (event) {
+    //            console.log(event.target.value);
+    //        },
+    //        render: function () {
+    //            return React.DOM.div({
+    //                    style: {
+    //                        margin: '0 20px'
+    //                    }
+    //                },
+    //                React.DOM.label({
+    //                    style: {
+    //                        color: '#aaaaaa',
+    //                        display: 'block',
+    //                        fontSize: '15px',
+    //                        marginBottom: '12px'
+    //                    }
+    //                }, this.props.name),
+    //                React.DOM.input({
+    //                    type: 'text',
+    //                    style: {
+    //                        background: 'transparent',
+    //                        border: '1px solid #aaaaaa',
+    //                        borderRadius: '3px',
+    //                        width: '255px',
+    //                        height: '34px',
+    //                        marginBottom: '26px',
+    //                        color:'#aaaaaa'
+    //                    },
+    //                    onChange:this._onChange
+    //                })
+    //            )
+    //        }
+    //    });
+    //    var selector = React.createClass({
+    //        propTypes: {
+    //            name: React.PropTypes.string.isRequired
+    //        },
+    //        _onChange: function (event) {
+    //            console.log(event.target.value);
+    //        },
+    //        render: function () {
+    //            return React.DOM.div({
+    //                    style: {
+    //                        margin: '0 20px'
+    //                    }
+    //                },
+    //                React.DOM.label({
+    //                    style: {
+    //                        color: '#aaaaaa',
+    //                        display: 'block',
+    //                        fontSize: '15px',
+    //                        marginBottom: '12px'
+    //                    }
+    //                }, this.props.name),
+    //                React.DOM.select({
+    //                    style: {
+    //                        background: 'transparent',
+    //                        border: '1px solid #aaaaaa',
+    //                        borderRadius: '3px',
+    //                        width: '255px',
+    //                        height: '34px',
+    //                        marginBottom: '26px',
+    //                        color:'#aaaaaa'
+    //                    },
+    //                    onChange:this._onChange
+    //                },
+    //                    React.DOM.option(null,'广告商'),
+    //                    React.DOM.option(null,'供应商'))
+    //            )
+    //        }
+    //    });
+    //    var CommentArea = React.createClass({
+    //        propTypes: {
+    //            name: React.PropTypes.string.isRequired
+    //        },
+    //        render: function () {
+    //            return React.DOM.div({
+    //                style:{
+    //                    width:'550px',
+    //                    margin:'auto',
+    //                    marginBottom:'20px'
+    //                }
+    //                },
+    //                React.DOM.label({
+    //                    style: {
+    //                        color: '#aaaaaa',
+    //                        display: 'block',
+    //                        fontSize: '15px',
+    //                        marginBottom: '12px'
+    //                    }
+    //                }, this.props.name),
+    //                React.DOM.textarea({
+    //                    style: {
+    //                        width:'550px',
+    //                        height:'128px',
+    //                        background: 'transparent',
+    //                        border: '1px solid #aaaaaa',
+    //                        borderRadius: '3px',
+    //                        color:'#aaaaaa'
+    //                    }
+    //                })
+    //            )
+    //        }
+    //    });
+
+    var FormBox = React.createClass({
+        propTypes: {
+            nameData: React.PropTypes.string.isRequired
+        },
+        getInitialState: function () {
+            return {
+                nameData: ' ',
+                compData: ' ',
+                mailData: ' ',
+                providerData: '广告商',
+                commentData: ' '
+            };
+        },
+        _onClick: function (event) {
+            if (this.state.nameData == ' ') {
+                alert('姓名不能为空');
+                return
+            }
+            if (this.state.compData == ' ') {
+                alert('公司名不能为空');
+                return
+            }
+            if (this.state.mailData == ' ') {
+                alert('邮箱不能为空');
+                return
+            }
+            if (this.state.commentData == ' ') {
+                alert('请您留言');
+                return
+            }
+            alert('姓名：' + this.state.nameData + '\n邮箱：' + this.state.mailData + '\n公司：' + this.state.compData + '\n我是一名：' + this.state.providerData + '\n您的留言：' + this.state.commentData)
+        },
+        _onNameChange: function (event) {
+            this.setState({
+                nameData: event.target.value,
+            });
+        },
+        _onCompChange: function (event) {
+            this.setState({
+                compData: event.target.value,
+            });
+        },
+        _onMailChange: function (event) {
+            this.setState({
+                mailData: event.target.value,
+            });
+        },
+        _providerOnChange: function (event) {
+            this.setState({
+                providerData: event.target.value,
+            });
+        },
+        _commentOnChange: function (event) {
+            this.setState({
+                commentData: event.target.value,
+            });
+        },
+        render: function () {
+            return React.DOM.div({
+                    style: {
+                        paddingTop: '66px',
+                        paddingBottom: '23px',
+                        backgroundImage: 'url(img/bg_contect.jpg)',
+                        backgroundSize: 'cover'
+                    }
+                },
+                React.DOM.h2({
+                    style: {
+                        textAlign: 'center',
+                        color: '#167fec',
+                        fontWeight: 'normal',
+                        marginBottom: '58px'
+                    }
+                }, '联系我们'),
+                React.DOM.div({
+                        style: {
+                            display: 'flex',
+                            justifyContent: 'center'
+                        }
+                    },
+                    React.DOM.div({
+                            className: 'flexbox'
+                        },
+                        React.DOM.div(null,
+                            React.DOM.label(null, '姓名'),
+                            React.DOM.input({
+                                type: 'text',
+                                onChange: this._onNameChange,
+                                value: this.state.nameData
+                            })
+                        ),
+                        React.DOM.div(null,
+                            React.DOM.label(null, '公司'),
+                            React.DOM.input({
+                                type: 'text',
+                                onChange: this._onCompChange,
+                                value: this.state.compData
+                            })
+                        )
+                    ),
+                    React.DOM.div({
+                            className: 'flexbox'
+                        },
+                        React.DOM.div(null,
+                            React.DOM.label(null, '邮箱'),
+                            React.DOM.input({
+                                type: 'text',
+                                onChange: this._onMailChange,
+                                value: this.state.mailData
+                            })
+                        ),
+                        React.DOM.div({
+                                style: {
+                                    margin: '0 20px'
+                                }
+                            },
+                            React.DOM.label({
+                                style: {
+                                    color: '#aaaaaa',
+                                    display: 'block',
+                                    fontSize: '15px',
+                                    marginBottom: '12px'
+                                }
+                            }, '我是一名'),
+                            React.DOM.select({
+                                    style: {
+                                        background: 'transparent',
+                                        border: '1px solid #aaaaaa',
+                                        borderRadius: '3px',
+                                        width: '255px',
+                                        height: '34px',
+                                        marginBottom: '26px',
+                                        color: '#aaaaaa'
+                                    },
+                                    onChange: this._providerOnChange,
+                                    value: this.state.providerData
+                                },
+                                React.DOM.option(null, '广告商'),
+                                React.DOM.option(null, '供应商'))
+                        )
+                    )
+                ),
+                React.DOM.div({
+                        style: {
+                            width: '550px',
+                            margin: 'auto',
+                            marginBottom: '20px'
+                        }
+                    },
+                    React.DOM.label({
+                        style: {
+                            color: '#aaaaaa',
+                            display: 'block',
+                            fontSize: '15px',
+                            marginBottom: '12px'
+                        }
+                    }, '您的留言'),
+                    React.DOM.textarea({
+                        style: {
+                            width: '550px',
+                            height: '128px',
+                            background: 'transparent',
+                            border: '1px solid #aaaaaa',
+                            borderRadius: '3px',
+                            color: '#aaaaaa'
+                        },
+                        onChange: this._commentOnChange,
+                        value: this.state.commentData
+                    })
+                ),
+                React.DOM.button({
+                    style: {
+                        width: '128px',
+                        height: '42px',
+                        background: '#167fec',
+                        textAlign: 'center',
+                        border: 'none',
+                        color: 'white',
+                        position: 'relative',
+                        left: '60%'
+                    },
+                    onClick: this._onClick
+                }, '发送')
+            )
+        }
+    });
+
+    var FooterNav = React.createClass({
+        render: function () {
+            return React.DOM.div({
+                    style: {
+                        display: 'flex',
+                        justifyContent: 'center',
+                        fontSize: '15px'
+                    }
+                },
+                React.DOM.div({style: {margin: '45px 20px'}}, '服务条款'),
+                React.DOM.div({style: {margin: '45px 20px'}}, '隐私政策'),
+                React.DOM.div({style: {margin: '45px 20px'}}, '加入我们'),
+                React.DOM.div({style: {margin: '45px 20px'}}, '联系我们'),
+                React.DOM.div({style: {margin: '45px 20px'}}, '广告主支持'),
+                React.DOM.div({style: {margin: '45px 20px'}}, '开发者支持')
+            )
+        }
+    })
+
+    var Footer = React.createClass({
+        render: function () {
+            return React.DOM.footer({
+                    style: {
+                        color: '#fff',
+                        textAlign: 'center',
+                        padding: '45px 0 75px 0',
+                        background: '#1a1c1d'
+                    }
+                },
+                React.DOM.img({
+                    src: 'img/logo_bottom.png',
+                    width: '302px'
+                }),
+                React.createElement(FooterNav),
+                React.DOM.p({
+                    style: {
+                        fontSize: '10px'
+                    }
+                }, 'COPYRIGHT CENTRIXLINK 2017')
+            )
+        }
+    })
+
+
+    var Page = React.createClass({
+        render: function () {
+            return React.DOM.div(null,
+                React.createElement(Header),
+                React.createElement(Banner),
+                React.createElement(MainContent),
+                React.createElement(FormBox),
+                React.createElement(Footer)
+            )
+        }
+    });
+    ReactDOM.render(
+        React.createElement(Page),
+        document.getElementById('app')
+    );
+</script>
+</body>
+</html>
