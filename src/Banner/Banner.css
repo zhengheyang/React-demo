@@ -1,0 +1,14 @@
+.banner {
+    height: 178px;
+    background-image: url("bg_contact_banner.jpg");
+    background-size: cover;
+}
+
+.banner h2 {
+    background: rgba(0,0,0,0.5);
+    height: 100%;
+    line-height: 178px;
+    color: #fff;
+    padding-left: 150px;
+    font-weight: normal;
+}
