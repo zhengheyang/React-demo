@@ -21,14 +21,9 @@ header {
     list-style-type: none;
     padding: 12px 15px;
     margin-left: 20px;
-}
-.nav-li button{
-    outline: none;
-    border:none;
-    background-color: transparent;
-    width:100%;
     cursor: pointer;
 }
+
 .nav-ul > li:last-child {
-    width: 20px;
+    width: 50px;
 }

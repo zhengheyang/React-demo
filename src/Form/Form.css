@@ -1,0 +1,68 @@
+.form-box {
+    padding-top: 60px;
+    padding-bottom: 30px;
+    background-image: url('bg_contect.jpg');
+    background-size: cover;
+}
+
+.form-box h2 {
+    text-align: center;
+    color: rgb(22, 127, 236);
+    font-weight: normal;
+    margin-bottom: 58px;
+}
+.big-flex-box {
+    display: flex;
+    justify-content: center;
+}
+
+.sm-flex-box div {
+    margin: 0 20px;
+}
+
+.sm-flex-box div label,.text-area label {
+    color: #aaaaaa;
+    display: block;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.sm-flex-box div input,.sm-flex-box div select {
+    background: transparent;
+    border: 1px solid #aaaaaa;
+    border-radius: 3px;
+    width: 255px;
+    height: 34px;
+    margin-bottom: 26px;
+    color: #aaaaaa;
+}
+
+.text-area {
+    width: 550px;
+    margin: auto auto 20px;
+}
+
+.text-area textarea {
+    width: 550px;
+    height: 128px;
+    background: transparent;
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 3px;
+    color: rgb(170, 170, 170);
+}
+.form-box h2 {
+    text-align: center;
+    color: #167fec;
+    font-weight: normal;
+    margin-bottom: 58px;
+}
+.form-box button {
+    width: 128px;
+    height: 42px;
+    background: rgb(22, 127, 236);
+    text-align: center;
+    border: none;
+    color: white;
+    position: relative;
+    left: 60%;
+}
